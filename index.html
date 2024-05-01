@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>eeeeRespira y actúa</title>
+    <title>aaaRespira y actúa</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
     <script>
@@ -83,6 +83,11 @@
                         video.style.visibility = 'visible';
                         video.currentTime = 0;
                         video.play();
+                        // Si se hace clic en la pantalla después de que se detecte el primer marcador, pasa al siguiente marcador
+                        if (currentMarker === 0) {
+                            var model = document.querySelector('#model1');
+                            model.components['animation-mixer'].mixer.setTime(0);
+                        }
                     }
                 });        
             }
