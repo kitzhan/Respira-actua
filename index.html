@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>aaaRespira y act˙a</title>
+    <title>aaaRespira y act√∫a</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
     <script>
@@ -21,22 +21,15 @@
     <link rel="stylesheet" href="global.css">
 
     <script>
-        // Primera solicitud de acceso a la c·mara
-        navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
-            // La c·mara est· disponible, puedes ejecutar tu cÛdigo de realidad aumentada aquÌ
-        })
-        .catch(function(err) {
-            console.log("No se puede acceder a la c·mara: ", err);
-        });
-
-        // Segunda solicitud de acceso a la c·mara
-        navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
-            // La c·mara est· disponible, puedes ejecutar tu cÛdigo de realidad aumentada aquÌ
-        })
-        .catch(function(err) {
-            console.log("No se puede acceder a la c·mara: ", err);
+        // Solicitar acceso a la c√°mara una vez que la p√°gina se haya cargado completamente
+        window.addEventListener('DOMContentLoaded', (event) => {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                // La c√°mara est√° disponible, puedes ejecutar tu c√≥digo de realidad aumentada aqu√≠
+            })
+            .catch(function(err) {
+                console.log("No se puede acceder a la c√°mara: ", err);
+            });
         });
     </script>
 
@@ -53,8 +46,7 @@
                 var data = this.data;
                 var el = this.el;        
 
-                /*let loadingVideo = document.getElementById('loadingVid');
-                loadingVideo.play();*/
+               
 
                 let id = "doorQr"+data.marker;
                 var doorQr  = document.getElementById(id );
