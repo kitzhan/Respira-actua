@@ -1,0 +1,136 @@
+.a-canvas.a-grab-cursor:hover {
+  cursor: none;
+}
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh; 
+  overflow: hidden;
+}
+.video-container video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 120%; 
+  min-height: 120%; 
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: 100vw;
+  height: 100vh;
+
+  /* Center the video */
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  opacity: 0; 
+  animation: fadeIn 1s ease forwards; 
+}
+  /* Define your animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+.buttons {
+  position: absolute;
+  margin-left: -10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.Info {
+  background-image: url("./images/Example.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.output {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  height: 80%;
+  transform: rotate3d(3, -1.7, -0.5, 38deg) translateZ(153px) translateX(29px)
+    translateY(36px);
+}
+
+.VideoExample {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-bottom: 10%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  perspective: 556px;
+}
+
+.say-hi-button {
+  padding: 0.25em;
+  border-radius: 4px;
+  border: none;
+  background: white;
+  color: black;
+  width: 4em;
+  height: 2em;
+}
+
+.gotoFacebook {
+  background-image: url("./images/facebook.png") !important;
+  background-size: contain !important;
+  border: none;
+  background: transparent;
+  padding: 0.25em;
+  border-radius: 4px;
+  color: black;
+  width: 50px;
+  height: 50px;
+}
+
+.gotoInstagram {
+  background-image: url("./images/instagram.png") !important;
+  background-size: contain !important;
+  border: none;
+  background: transparent;
+  padding: 0.25em;
+  border-radius: 4px;
+  color: black;
+  width: 50px;
+  height: 50px;
+}
+
+.gotoHbo {
+  background-image: url("./images/hbo.png") !important;
+  background-size: contain !important;
+  border: none;
+  background: transparent;
+  padding: 0.25em;
+  border-radius: 4px;
+  color: black;
+  width: 50px;
+  height: 50px;
+}

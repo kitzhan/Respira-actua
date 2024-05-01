@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Respira y actúa</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NEBY115E8F');
+    </script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="js/aframe-extras.js"></script>
+    <script src='js/portal/aframe-portal-door.js'></script>
+    <script src='js/portal/threex-portal-door.js'></script>
+
+    <link rel="stylesheet" href="global.css">
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+            // La cámara está disponible, puedes ejecutar tu código de realidad aumentada aquí
+        })
+        .catch(function(err) {
+            console.log("No se puede acceder a la cámara: ", err);
+        });
+    </script>
+
+    <script>
+		let markerFound =[false,false,false];
+		let currentMarker =-1;
+        
+
+        AFRAME.registerComponent('clickhandler', {
+            schema:{
+marker: {default: 1},
+            },
+            init: function () {
+                var data = this.data;
+                var el = this.el;        
+
+                /*let loadingVideo = document.getElementById('loadingVid');
+                loadingVideo.play();*/
+
+                let id = "doorQr"+data.marker;
+                var doorQr  = document.getElementById(id );
+                doorQr .addEventListener("markerFound", (e)=>{ 
+                    console.log("markfound");
+                    markerFound[data.marker] = true; 
+                    currentMarker=data.marker;
+
+                    var model = document.querySelector('#model' + currentMarker);
+                    model.components['animation-mixer'].mixer.setTime(0);
+                });
+                doorQr .addEventListener("markerLost", (e)=>{ 
+                    var model = document.querySelector('#model' + currentMarker);
+                    model.components['animation-mixer'].mixer.setTime(0);
+
+                    var video = document.getElementById('tecnology' + currentMarker );
+                    markerFound[data.marker] = false
+                    if(video.style.visibility=='visible'){
+                        video.pause();
+                        video.style.visibility='hidden'
+                    }
+                });
+
+                el.addEventListener('click', function () {            
+					if(!markerFound.includes(true))return;
+
+                    var video = document.getElementById('tecnology' + currentMarker );
+                    console.log(currentMarker);
+                    if(video.style.visibility=='visible'){
+                        video.pause();
+                        video.style.visibility='hidden'
+                    }
+                    else{
+                        video.style.visibility = 'visible';
+                        video.currentTime = 0;
+                        video.play();
+                    }
+                });        
+            }
+        });
+        function HideVideos(){
+            var video = document.getElementById('tecnology' + currentMarker );
+            video.pause();
+            video.style.visibility='hidden'
+        }
+        function onLoadingEnd(e) {
+            let loadingVideo = document.getElementById('loadingVid');
+            loadingVideo .style.visibility='hidden'
+        }
+    </script>
+</head>
+
+<body style="margin: 0px; overflow: hidden;">
+    <a-scene  embedded arjs='sourceType: webcam;'
+        renderer="colorManagement: true; antialias: true; logarithmicDepthBuffer:true; alpha: true; precision: medium"
+        info-message="htmlSrc: #messageText"
+        model-viewer="gltfModel: #triceratops; title: Triceratops"
+    >
+        <a-sound src="./audio/scifi.m4a" autoplay="true" position="0 0 0"></a-sound>
+        <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0" listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
+        <a-assets>
+            <a-asset-item id="door" src="./assets/NewDoor/Door.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="planet" src="./assets/VentanaFinal1.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="map" src="./assets/VentanaFinal2.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+        </a-assets>
+        <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
+        <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt' >
+            <a-entity id="model0" clickhandler="marker:0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
+        </a-marker>
+        <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt' >
+            <a-entity id="model1" clickhandler="marker:1" animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+        </a-marker>
+        <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt' >
+            <a-entity id="model2" clickhandler="marker:2" animation-mixer="clip:*;" gltf-model="#map" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+        </a-marker>
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+    </a-scene>
+</body>
+</html>
