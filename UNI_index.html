@@ -37,7 +37,7 @@
 
         AFRAME.registerComponent('clickhandler', {
             schema:{
-marker: {default: 1},
+                marker: {default: 1},
             },
             init: function () {
                 var data = this.data;
@@ -69,7 +69,7 @@ marker: {default: 1},
                 });
 
                 el.addEventListener('click', function () {            
-					if(!markerFound.includes(true))return;
+                    if(!markerFound.includes(true))return;
 
                     var video = document.getElementById('tecnology' + currentMarker );
                     console.log(currentMarker);
@@ -106,9 +106,9 @@ marker: {default: 1},
         <a-sound src="./audio/scifi.m4a" autoplay="true" position="0 0 0"></a-sound>
         <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0" listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
-            <a-asset-item id="door" src="./assets/NewDoor/Door.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="planet" src="./assets/VentanaFinal1.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="map" src="./assets/VentanaFinal2.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="door" src="./assets/NewDoor/Door.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
         </a-assets>
         <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
         <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt' >
