@@ -51,13 +51,17 @@
 
                 el.addEventListener('click', function () {
                     // Obtener el modelo actual
-                    var currentModel = document.getElementById('currentModel');
+                    var currentModel = document.getElementById('Door.glb');
+		   // Ocultar el modelo actual
+                   currentModel.setAttribute('visible', 'false');
 
-                    // Cambiar el modelo actual a otro modelo
-                    // Aquí puedes cambiar la lógica para cambiar el modelo según tus necesidades
-                    // Por ejemplo, cambiar el atributo 'gltf-model' del modelo actual a otro modelo
-                    // Aquí simplemente lo oculto, pero puedes cambiarlo por otro modelo
-                    currentModel.setAttribute('visible', 'false');
+                  // Referenciar el nuevo modelo que deseas mostrar
+                  var newModel = document.getElementById('VentanaFinal1.gltf');
+
+                  // Mostrar el nuevo modelo
+                  newModel.setAttribute('visible', 'true');
+		
+
                 });
             }
         });
