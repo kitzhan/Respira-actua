@@ -41,9 +41,9 @@
     </script>
 
     <script>
-		let markerFound =[false,false,false];
-		let currentMarker =-1;
-        
+        let markerFound = [false, false, false];
+        let currentMarker = -1;
+
 
         AFRAME.registerComponent('tapHandler', {
             init: function () {
@@ -51,55 +51,67 @@
 
                 el.addEventListener('touchstart', function () {
                     // Obtener el modelo actual
-                    var currentModel = document.getElementById('Door.glb');
-		   // Ocultar el modelo actual
-                   currentModel.setAttribute('visible', 'false');
+                  var currentModel = document.querySelector('#model' + currentMarker);
 
-                  // Referenciar el nuevo modelo que deseas mostrar
-                  var newModel = document.getElementById('VentanaFinal1.gltf');
 
-                  // Mostrar el nuevo modelo
-                  newModel.setAttribute('visible', 'true');
-		
+                    // Ocultar el modelo actual
+                    currentModel.setAttribute('visible', 'false');
+
+                    // Incrementar el índice del marcador actual
+                    currentMarker = (currentMarker + 1) % markerFound.length;
+
+                    // Referenciar el nuevo modelo que deseas mostrar
+                    var newModel = document.querySelector('#model' + currentMarker);
+
+                    // Mostrar el nuevo modelo
+                    newModel.setAttribute('visible', 'true');
 
                 });
             }
         });
 
-        function HideVideos(){
-            var video = document.getElementById('tecnology' + currentMarker );
+        function HideVideos() {
+            var video = document.getElementById('tecnology' + currentMarker);
             video.pause();
-            video.style.visibility='hidden'
+            video.style.visibility = 'hidden'
         }
+
         function onLoadingEnd(e) {
             let loadingVideo = document.getElementById('loadingVid');
-            loadingVideo .style.visibility='hidden'
+            loadingVideo.style.visibility = 'hidden'
         }
     </script>
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
-    <a-scene  embedded arjs='sourceType: webcam;'
+    <a-scene embedded arjs='sourceType: webcam;'
         renderer="colorManagement: true; antialias: true; logarithmicDepthBuffer:true; alpha: true; precision: medium"
         info-message="htmlSrc: #messageText"
         model-viewer="gltfModel: #triceratops; title: Triceratops"
     >
         <a-sound src="./audio/scifi.m4a" autoplay="true" position="0 0 0"></a-sound>
-        <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0" listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
+        <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0"
+            listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
-            <a-asset-item id="door" src="./assets/NewDoor/Door.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="door" src="./assets/NewDoor/Door.glb" response-type="arraybuffer"
+                crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer"
+                crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer"
+                crossorigin="anonymous"></a-asset-item>
         </a-assets>
         <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
-        <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt' >
-            <a-entity id="model0" clickhandler animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
+        <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
+            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3"
+                rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
         </a-marker>
-        <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt' >
-            <a-entity id="model1" clickhandler animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+        <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
+            <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3"
+                rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
-        <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt' >
-            <a-entity id="model2" clickhandler animation-mixer="clip:*;" gltf-model="#map" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+        <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
+            <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#map" position='0 1 0.2' scale="0.3 0.3 0.3"
+                rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
         <a-entity cursor="rayOrigin:mouse"></a-entity>
     </a-scene>
