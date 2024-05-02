@@ -45,11 +45,11 @@
 		let currentMarker =-1;
         
 
-        AFRAME.registerComponent('clickhandler', {
+        AFRAME.registerComponent('tapHandler', {
             init: function () {
                 var el = this.el;
 
-                el.addEventListener('click', function () {
+                el.addEventListener('touchstart', function () {
                     // Obtener el modelo actual
                     var currentModel = document.getElementById('Door.glb');
 		   // Ocultar el modelo actual
