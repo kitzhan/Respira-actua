@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>adviceRespira y actúa</title>
+    <title>erase meRespira y actúa</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
     <script>
@@ -56,9 +56,11 @@
 
                     // Referenciar el nuevo modelo que deseas mostrar
                     var newModel = document.querySelector('#2');
-
+                   
                     // Mostrar el nuevo modelo
                     newModel.setAttribute('visible', 'true');
+
+                    
                 });
             }
         });
@@ -79,8 +81,8 @@
             <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <!-- Agrega modelos adicionales para cada marcador -->
-            <a-asset-item id="2" src="./assets/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="3" src="./assets/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="2" src="./assets/NewDoor/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="3" src="./assets/NewDoor/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
         </a-assets>
 
         <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
