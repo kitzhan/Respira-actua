@@ -51,7 +51,7 @@
 
                 el.addEventListener('touchstart', function () {
                     // Obtener el modelo actual
-                  var currentModel = document.querySelector('#model' + currentMarker);
+                  var currentModel = document.querySelector('#model10' + currentMarker);
 
 
                     // Ocultar el modelo actual
@@ -61,7 +61,7 @@
                     currentMarker = (currentMarker + 1) % markerFound.length;
 
                     // Referenciar el nuevo modelo que deseas mostrar
-                    var newModel = document.querySelector('#model' + currentMarker);
+                    var newModel = document.querySelector('#model11' + currentMarker);
 
                     // Mostrar el nuevo modelo
                     newModel.setAttribute('visible', 'true');
