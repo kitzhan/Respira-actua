@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>tasteeeRespira y actúa</title>
+    <title>adviceRespira y actúa</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
     <script>
@@ -44,42 +44,24 @@
         let markerFound = [false, false, false];
         let currentMarker = -1;
 
-
         AFRAME.registerComponent('tapHandler', {
             init: function () {
                 var el = this.el;
 
                 el.addEventListener('touchstart', function () {
                     // Obtener el modelo actual
-                  var currentModel = document.querySelector('#model10' + currentMarker);
-
-
+                    var currentModel = document.querySelector('#model' + currentMarker);
                     // Ocultar el modelo actual
                     currentModel.setAttribute('visible', 'false');
 
-                    // Incrementar el índice del marcador actual
-                    currentMarker = (currentMarker + 1) % markerFound.length;
-
                     // Referenciar el nuevo modelo que deseas mostrar
-                    var newModel = document.querySelector('#model11' + currentMarker);
+                    var newModel = document.querySelector('#2');
 
                     // Mostrar el nuevo modelo
                     newModel.setAttribute('visible', 'true');
-
                 });
             }
         });
-
-        function HideVideos() {
-            var video = document.getElementById('tecnology' + currentMarker);
-            video.pause();
-            video.style.visibility = 'hidden'
-        }
-
-        function onLoadingEnd(e) {
-            let loadingVideo = document.getElementById('loadingVid');
-            loadingVideo.style.visibility = 'hidden'
-        }
     </script>
 </head>
 
@@ -93,26 +75,28 @@
         <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0"
             listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
-            <a-asset-item id="door" src="./assets/NewDoor/Door.glb" response-type="arraybuffer"
-                crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer"
-                crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer"
-                crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="door" src="./assets/NewDoor/Door.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <!-- Agrega modelos adicionales para cada marcador -->
+            <a-asset-item id="2" src="./assets/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="3" src="./assets/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
         </a-assets>
-        <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
+
         <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
-            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3"
-                rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
+            <!-- Cambia el modelo para el primer marcador -->
+            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
         </a-marker>
         <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
-            <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3"
-                rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+            <!-- Cambia el modelo para el segundo marcador -->
+            <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
         <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
-            <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#map" position='0 1 0.2' scale="0.3 0.3 0.3"
-                rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+            <!-- Cambia el modelo para el tercer marcador -->
+            <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#map" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
+
+        <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
         <a-entity cursor="rayOrigin:mouse"></a-entity>
     </a-scene>
 </body>
