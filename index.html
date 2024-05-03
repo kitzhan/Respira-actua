@@ -84,26 +84,23 @@
         <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0"
             listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
-            <a-asset-item id="door" src="./assets/NewDoor/monkey.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <!-- Agrega modelos adicionales para cada marcador -->
-            <a-asset-item id="2" src="./assets/NewDoor/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="3" src="./assets/NewDoor/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-        </a-assets>
+    <!-- Agrega modelos adicionales para cada marcador -->
+    <a-asset-item id="modeloSegundo" src="./assets/NewDoor/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="modeloTercero" src="./assets/NewDoor/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+</a-assets>
 
-        <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
-            <!-- Cambia el modelo para el primer marcador -->
-            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
-        </a-marker>
-        <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
-            <!-- Cambia el modelo para el segundo marcador -->
-            <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
-        </a-marker>
-        <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
-            <!-- Cambia el modelo para el tercer marcador -->
-            <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#map" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
-        </a-marker>
+<a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
+    <!-- Cambia el modelo para el primer marcador -->
+    <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
+</a-marker>
+<a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
+    <!-- Cambia el modelo para el segundo marcador -->
+    <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+</a-marker>
+<a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
+    <!-- Cambia el modelo para el tercer marcador -->
+    <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#modeloTercero" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+</a-marker>
 
         <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
         <a-entity cursor="rayOrigin:mouse"></a-entity>
