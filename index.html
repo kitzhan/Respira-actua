@@ -49,19 +49,26 @@
                 var el = this.el;
 
                 el.addEventListener('touchstart', function () {
-                    // Obtener el modelo actual
-                    var currentModel = document.querySelector('#model' + currentMarker);
-                    // Ocultar el modelo actual
-                    currentModel.setAttribute('visible', 'false');
+                // Obtener el marcador actual
+                var currentMarker = el.getAttribute('id');
+                // Obtener el número del marcador
+                var markerNumber = currentMarker[currentMarker.length - 1];
+                // Construir el identificador del modelo basado en el número del marcador
+                var modelId = '#model' + markerNumber;
+                // Obtener el modelo actual
+                var currentModel = document.querySelector(modelId);
+                // Ocultar el modelo actual
+                currentModel.setAttribute('visible', 'false');
 
-                    // Referenciar el nuevo modelo que deseas mostrar
-                    var newModel = document.querySelector('#2');
-                   
-                    // Mostrar el nuevo modelo
+                // Referenciar el nuevo modelo que deseas mostrar
+                var newModelId = '#model' + (parseInt(markerNumber) + 1);
+                // Mostrar el nuevo modelo
+                var newModel = document.querySelector(newModelId);
+                if (newModel) {
                     newModel.setAttribute('visible', 'true');
-
-                    
-                });
+                } else {
+                    console.log('No hay más modelos para mostrar.');
+                }
             }
         });
     </script>
@@ -77,7 +84,7 @@
         <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0"
             listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
-            <a-asset-item id="door" src="./assets/NewDoor/Door.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="door" src="./assets/NewDoor/moneky.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <!-- Agrega modelos adicionales para cada marcador -->
