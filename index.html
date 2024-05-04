@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>5sosRespira y actúa</title>
+    <title>elastRespira y actúa</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
     <script>
@@ -88,27 +88,28 @@
         <a-camera id="scene" camera="fov: 60;" id="camera" rotation-reader position="0 0 0"
             listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
-            <a-asset-item id="door" src="./assets/NewDoor/monkey.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="planet" src="./assets/VentanaFinal1.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="map" src="./assets/VentanaFinal2.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="door" src="./assets/NewDoor/monkey.glft" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="planet" src="./assets/VentanaFinal1.glft" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="map" src="./assets/VentanaFinal2.glft" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <!-- Agrega modelos adicionales para cada marcador -->
-           <a-asset-item id="modeloSegundo" src="./assets/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-           <a-asset-item id="modeloTercero" src="./assets/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+           <a-asset-item id="modeloSegundo" src="./assets/Segundo.glft" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+           <a-asset-item id="modeloTercero" src="./assets/Tercero.glft" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
 
         </a-assets>
 
-        <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
-            <!-- Cambia el modelo para el primer marcador -->
-            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
-        </a-marker>
-        <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
-            <!-- Cambia el modelo para el segundo marcador -->
-            <a-entity id="model1" animation-mixer="clip:*;" glft-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
-        </a-marker>
-        <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
-            <!-- Cambia el modelo para el tercer marcador -->
-            <a-entity id="model2" animation-mixer="clip:*;" glb-model="#modeloTercero" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
-        </a-marker>
+       <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
+    <!-- Cambia el modelo para el primer marcador -->
+    <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
+</a-marker>
+<a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
+    <!-- Cambia el modelo para el segundo marcador -->
+    <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+</a-marker>
+<a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
+    <!-- Cambia el modelo para el tercer marcador -->
+    <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#modeloTercero" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+</a-marker>
+
 
         <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
         <a-entity cursor="rayOrigin:mouse"></a-entity>
