@@ -55,14 +55,14 @@
                 // Obtener el número del marcador
                 var markerNumber = currentMarker[currentMarker.length - 1];
                 // Construir el identificador del modelo basado en el número del marcador
-                var modelId = '#model' + markerNumber;
+                var modelId = '#model0';
                 // Obtener el modelo actual
                 var currentModel = document.querySelector(modelId);
                 // Ocultar el modelo actual
                 currentModel.setAttribute('visible', 'false');
 
                 // Referenciar el nuevo modelo que deseas mostrar
-                var newModelId = '#model2' + (parseInt(markerNumber) + 1);
+                var newModelId = '#model1' ;
                // Mostrar el nuevo modelo
                var newModel = document.querySelector(newModelId);
                if (newModel) {
@@ -100,7 +100,9 @@
        <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
     <!-- Cambia el modelo para el primer marcador -->
     <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
-</a-marker>
+ <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+
+       </a-marker>
 <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
     <!-- Cambia el modelo para el segundo marcador -->
     <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
