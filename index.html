@@ -62,7 +62,7 @@
                 currentModel.setAttribute('visible', 'false');
 
                 // Referenciar el nuevo modelo que deseas mostrar
-                var newModelId = '#model' + (parseInt(markerNumber) + 1);
+                var newModelId = '#model2' + (parseInt(markerNumber) + 1);
                // Mostrar el nuevo modelo
                var newModel = document.querySelector(newModelId);
                if (newModel) {
@@ -89,8 +89,8 @@
             listener look-controls="enabled:false ;reverseMouseDrag:false; touchEnabled: false"></a-camera>
         <a-assets>
             <a-asset-item id="door" src="./assets/NewDoor/monkey.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="planet" src="./assets/VentanaFinal1.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            <a-asset-item id="map" src="./assets/VentanaFinal2.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <!-- Agrega modelos adicionales para cada marcador -->
            <a-asset-item id="modeloSegundo" src="./assets/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
            <a-asset-item id="modeloTercero" src="./assets/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
@@ -103,7 +103,7 @@
         </a-marker>
         <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
             <!-- Cambia el modelo para el segundo marcador -->
-            <a-entity id="model1" animation-mixer="clip:*;" glb-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
+            <a-entity id="model1" animation-mixer="clip:*;" glft-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
         <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
             <!-- Cambia el modelo para el tercer marcador -->
