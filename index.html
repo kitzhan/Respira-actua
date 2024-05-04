@@ -41,7 +41,11 @@
     </script>
 
     <script>
-        let currentModel = null;
+        let markerFound = [false, false, false];
+        let currentMarker = -1;
+        var currentModel = document.querySelector('#model10');
+        // Ocultar el modelo actual
+        currentModel.setAttribute('visible', 'true');
 
         AFRAME.registerComponent('tapHandler', {
             init: function () {
@@ -51,23 +55,23 @@
                     console.log('Toque detectado en la pantalla');
                     // Obtener el marcador actual
                     var currentMarker = el.getAttribute('id');
-                    
-                    if (currentMarker === 'doorQr0') {
-                        // Ocultar el modelo actual
-                        if (currentModel) {
-                            currentModel.setAttribute('visible', 'false');
-                        }
-                        // Mostrar el modelo de la puerta
-                        currentModel = document.querySelector('#model1');
-                        currentModel.setAttribute('visible', 'true');
-                    } else if (currentMarker === 'doorQr1' || currentMarker === 'doorQr2') {
-                        // Ocultar el modelo actual
-                        if (currentModel) {
-                            currentModel.setAttribute('visible', 'false');
-                        }
-                        // Mostrar el modelo correspondiente al marcador
-                        currentModel = document.querySelector('#' + currentMarker + ' model');
-                        currentModel.setAttribute('visible', 'true');
+                    // Obtener el número del marcador
+                    var markerNumber = currentMarker[currentMarker.length - 1];
+                    // Construir el identificador del modelo basado en el número del marcador
+                    var modelId = '#model10';
+                    // Obtener el modelo actual
+                    var currentModel = document.querySelector(modelId);
+                    // Ocultar el modelo actual
+                    currentModel.setAttribute('visible', 'false');
+
+                    // Referenciar el nuevo modelo que deseas mostrar
+                    var newModelId = '#model1';
+                    // Mostrar el nuevo modelo
+                    var newModel = document.querySelector(newModelId);
+                    if (newModel) {
+                        newModel.setAttribute('visible', 'true');
+                    } else {
+                        console.log('No hay más modelos para mostrar.');
                     }
                 });
             }
@@ -95,18 +99,16 @@
 
         <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
             <!-- Cambia el modelo para el primer marcador -->
-            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#touchstart" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
-            <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous" visible="false"></a-entity>
+            <a-entity id="model0" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
+            <a-entity id="model1" animation-mixer="clip:*;" gltf-model="#modeloSegundo" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
         <a-marker id="doorQr1" type='pattern' url='./patterns/pattern-2.patt'>
             <!-- Cambia el modelo para el segundo marcador -->
-            <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#touchstart" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
-            <a-entity id="model3" animation-mixer="clip:*;" gltf-model="#planet" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous" visible="false"></a-entity>
+            <a-entity id="model2" animation-mixer="clip:*;" gltf-model="#door" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
         </a-marker>
         <a-marker id="doorQr2" type='pattern' url='./patterns/pattern-3.patt'>
             <!-- Cambia el modelo para el tercer marcador -->
-            <a-entity id="model4" animation-mixer="clip:*;" gltf-model="#map" position='0 -1 1' scale="0.3 0.3 0.3" rotation='-90 0 0' crossOrigin="anonymous"></a-entity>
-            <a-entity id="model5" animation-mixer="clip:*;" gltf-model="#modeloTercero" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous" visible="false"></a-entity>
+            <a-entity id="model3" animation-mixer="clip:*;" gltf-model="#modeloTercero" position='0 1 0.2' scale="0.3 0.3 0.3" rotation='-90 270 90' crossOrigin="anonymous"></a-entity>
         </a-marker>
 
         <a-entity light="type: hemisphere; color: #FFF; intensity: 1.5" position="-0.5 1 1"></a-entity>
