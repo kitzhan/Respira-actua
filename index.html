@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>tasteeeRespira y actúa</title>
+    <title>dalasRespira y actúa</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEBY115E8F"></script>
     <script>
@@ -62,7 +62,7 @@
                 currentModel.setAttribute('visible', 'false');
 
                 // Referenciar el nuevo modelo que deseas mostrar
-                var newModelId = '#model' + (parseInt(markerNumber) + 1);
+                var newModelId = '#modelSegundo' + (parseInt(markerNumber) + 1);
                 // Mostrar el nuevo modelo
                 var newModel = document.querySelector(newModelId);
                 if (newModel) {
@@ -90,8 +90,9 @@
             <a-asset-item id="planet" src="./assets/VentanaFinal1.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <a-asset-item id="map" src="./assets/VentanaFinal2.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
             <!-- Agrega modelos adicionales para cada marcador -->
-            <a-asset-item id="2" src="./assets/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-            <a-asset-item id="3" src="./assets/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+           <a-asset-item id="modeloSegundo" src="./assets/Segundo.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+           <a-asset-item id="modeloTercero" src="./assets/Tercero.glb" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+
         </a-assets>
 
         <a-marker id="doorQr0" type='pattern' url='./patterns/pattern-1.patt'>
