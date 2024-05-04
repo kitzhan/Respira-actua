@@ -43,7 +43,9 @@
     <script>
         let markerFound = [false, false, false];
         let currentMarker = -1;
-
+ var currentModel = document.querySelector('#model0');
+                // Ocultar el modelo actual
+                currentModel.setAttribute('visible', 'true');
         AFRAME.registerComponent('tapHandler', {
             init: function () {
                 var el = this.el;
